@@ -5,7 +5,7 @@ import './App.css';
 
 
 function App() {
-    // State to hold the list of tasks
+    // To hold the list of tasks
     const [tasks, setTasks] = useState([
         { id: 1, title: "Buy groceries", completed: false },
         { id: 2, title: "Walk the dog", completed: true },

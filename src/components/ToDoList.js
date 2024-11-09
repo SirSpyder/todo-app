@@ -1,6 +1,6 @@
 import React from 'react';
 import ToDoItem from './ToDoItem';
-
+// Header 2 and to do list function
 function ToDoList({ items, onDeleteTask }) {
     return (
         <div>

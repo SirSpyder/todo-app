@@ -12,6 +12,7 @@ function Sidebar({ onAddTask, onClearTasks }) {
     };
 
     //added class for css to work
+    // Side Bar as well as Header 2
     return (
         <div className="sidebar"> {/* Make sure to use the correct class name here */}
             <h2>Task Manager</h2>
