@@ -6,12 +6,8 @@
   border-right: 1px solid #ccc;
   width: 250px;
 }
-/* Task Item */
-ul li.task-item {
-  font-size: 50 px !important;
-  margin-bottom: 8 px;
+/* Task Item is in line css */
 
-}
 /* App.css */
 
 h1 {

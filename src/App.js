@@ -3,7 +3,6 @@ import ToDoList from './components/ToDoList';
 import Sidebar from './components/Sidebar';
 import './App.css';
 
-
 function App() {
     // To hold the list of tasks
     const [tasks, setTasks] = useState([
@@ -13,28 +12,47 @@ function App() {
     ]);
 
     // Function to add a new task
-    const handleAddTask = (newTask) => {
-        setTasks([...tasks, newTask]);
+    const handleAddTask = () => {
+        const newTask = { id: tasks.length + 1, title: "New Task", completed: false };
+        setTasks([...tasks, newTask]); // Create a new array with the new task added
     };
+    
 
     // Function to clear all tasks
     const handleClearTasks = () => {
         setTasks([]);
     };
+
     // New function to delete a specific task by its id
     const handleDeleteTask = (id) => {
         setTasks(tasks.filter(task => task.id !== id));
     };
+
+    //for checkbox on tasks
+    const onToggleComplete = (taskId) => {
+        setTasks((prevTasks) =>
+            prevTasks.map((task) =>
+                task.id === taskId ? { ...task, completed: !task.completed } : task
+            )
+        );
+    };
+
 
     return (
         <div style={{ display: 'flex' }}>
             <Sidebar onAddTask={handleAddTask} onClearTasks={handleClearTasks} />
             <div style={{ padding: '20px', flex: 1 }}>
                 <h1>My To-Do List</h1>
-                <ToDoList items={tasks} />
+                {/* Pass the necessary functions as props to ToDoList */}
+                <ToDoList
+                    items={tasks}
+                    onDeleteTask={handleDeleteTask}
+                    onToggleComplete={onToggleComplete} 
+                />
             </div>
         </div>
     );
 }
+
 
 export default App;

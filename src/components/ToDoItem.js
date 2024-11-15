@@ -1,14 +1,20 @@
 import React from 'react';
-//Check box and the task with in the list 
-function ToDoItem({ item, onDelete }) {
+
+// Task item with a checkbox and delete button
+function ToDoItem({ item, onDelete, onToggle }) {
     return (
-        <li className="task-item">
-            <input type="checkbox" checked={item.completed} readOnly />
-            <span>{item.title}</span>
+        <li style={{ fontSize: '20px', marginBottom: '8px' }}>
+            {/* Checkbox to toggle completion */}
+            <input 
+                type="checkbox" 
+                checked={item.completed} 
+                onChange={onToggle} 
+                style={{ marginRight: '10px' }}
+            />
+            {item.title}
             <button onClick={onDelete} style={{ marginLeft: '10px' }}>Delete</button>
         </li>
     );
 }
 
 export default ToDoItem;
-

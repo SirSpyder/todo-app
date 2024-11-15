@@ -11,10 +11,8 @@ function Sidebar({ onAddTask, onClearTasks }) {
         }
     };
 
-    //added class for css to work
-    // Side Bar as well as Header 2
     return (
-        <div className="sidebar"> {/* Make sure to use the correct class name here */}
+        <div className="sidebar">
             <h2>Task Manager</h2>
             <input
                 type="text"
@@ -22,11 +20,12 @@ function Sidebar({ onAddTask, onClearTasks }) {
                 value={taskTitle}
                 onChange={(e) => setTaskTitle(e.target.value)}
             />
-            <button onClick={handleAddTask}>Add Task</button>
+            <button onClick={handleAddTask} style={{ marginTop: '10px' }}>Add Task</button>
             <button onClick={onClearTasks} style={{ marginTop: '10px' }}>
                 Clear Tasks
             </button>
         </div>
     );
 }
+
 export default Sidebar;

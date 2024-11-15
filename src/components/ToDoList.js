@@ -1,19 +1,18 @@
 import React from 'react';
 import ToDoItem from './ToDoItem';
-// Header 2 and to do list function
-function ToDoList({ items, onDeleteTask }) {
+
+function ToDoList({ items, onDeleteTask, onToggleComplete }) {
     return (
-        <div>
-            <h2>List of Tasks</h2>
-            <ul>
-                {items.map(item => (
-                    <ToDoItem 
+        <ul>
+            {items.map((item) => (
+                <ToDoItem
                     key={item.id}
                     item={item}
-                    onDelete={() => onDeleteTask(item.id)}/>
-                ))}
-            </ul>
-        </div>
+                    onDelete={() => onDeleteTask(item.id)} // Pass the delete function
+                    onToggle={() => onToggleComplete(item.id)} // Pass the toggle function
+                />
+            ))}
+        </ul>
     );
 }
 
