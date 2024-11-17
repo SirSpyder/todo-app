@@ -4,25 +4,22 @@ function Sidebar({ onAddTask, onClearTasks }) {
     const [taskTitle, setTaskTitle] = useState("");
 
     // Handle adding a new task
-    const handleAddTask = () => {
-        if (taskTitle.trim()) {
-            onAddTask({ id: Date.now(), title: taskTitle, completed: false });
-            setTaskTitle(""); // Clear the input field
-        }
+    const handleAddTaskClick = () => {
+        onAddTask(taskTitle); // Pass the entered task title to App.js
+        setTaskTitle(""); // Clear the input field after adding the task
     };
 
     return (
-        <div className="sidebar">
+        <div style= {{padding: '20px', backgroundColor: '#ADD8E6', width: '200px'}}>
             <h2>Task Manager</h2>
             <input
                 type="text"
                 placeholder="New task"
-                value={taskTitle}
-                onChange={(e) => setTaskTitle(e.target.value)}
+                value={taskTitle} // Controlled input
+                onChange={(e) => setTaskTitle(e.target.value)} // Update state on input
             />
-            <button onClick={handleAddTask} style={{ marginTop: '10px' }}>Add Task</button>
-            <button onClick={onClearTasks} style={{ marginTop: '10px' }}>
-                Clear Tasks
+            <button onClick={handleAddTaskClick} style={{ marginTop: '10px' }}>
+                Add Task
             </button>
         </div>
     );

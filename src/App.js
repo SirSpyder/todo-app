@@ -11,15 +11,16 @@ function App() {
         { id: 3, title: "Read a book", completed: false },
     ]);
 
-    // Function to add a new task
-    const handleAddTask = () => {
-        const newTask = { id: tasks.length + 1, title: "New Task", completed: false };
-        setTasks([...tasks, newTask]); // Create a new array with the new task added
+      // Function to add a new task with a custom title
+      const handleAddTask = (title) => {
+        if (!title.trim()) return; // Prevent adding empty tasks
+        const newTask = { id: Date.now(), title, completed: false };
+        setTasks([...tasks, newTask]);
     };
     
 
     // Function to clear all tasks
-    const handleClearTasks = () => {
+    const handleClearTasks = (id) => {
         setTasks([]);
     };
 
