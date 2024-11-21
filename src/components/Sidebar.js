@@ -21,6 +21,9 @@ function Sidebar({ onAddTask, onClearTasks }) {
             <button onClick={handleAddTaskClick} style={{ marginTop: '10px' }}>
                 Add Task
             </button>
+            <button onClick={onClearTasks} style={{ marginTop: "10px" }}>
+                Clear Tasks
+            </button>
         </div>
     );
 }

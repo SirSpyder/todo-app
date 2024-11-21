@@ -1,7 +1,7 @@
 import React from 'react';
 import ToDoItem from './ToDoItem';
 
-function ToDoList({ items, onDeleteTask, onToggleComplete }) {
+function ToDoList({ items, onDeleteTask, onToggleComplete, onEditTask }) {
     return (
         <ul>
             {items.map((item) => (
@@ -10,6 +10,7 @@ function ToDoList({ items, onDeleteTask, onToggleComplete }) {
                     item={item}
                     onDelete={() => onDeleteTask(item.id)} // Pass the delete function
                     onToggle={() => onToggleComplete(item.id)} // Pass the toggle function
+                    onEdit={() => onEditTask(item)} //Pass the task to edit
                 />
             ))}
         </ul>
