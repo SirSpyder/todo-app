@@ -2,29 +2,34 @@ import React, { useState, useEffect } from "react";
 
 function TaskForm({ isEditing, taskToEdit, onAddTask, onUpdateTask }) {
     const [title, setTitle] = useState("");
+    // state to manage wheather the task is completed 
     const [completed, setCompleted] = useState(false);
+
 
     useEffect(() => {
         if (isEditing && taskToEdit) {
             setTitle(taskToEdit.title);
             setCompleted(taskToEdit.completed);
         } else {
+            // reset form fields if not editing
             setTitle("");
             setCompleted(false);
         }
     }, [isEditing, taskToEdit]);
 
+    // Form submission for adding or updating a task
     const handleSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault(); //prevents page reload
         if (isEditing) {
             onUpdateTask({ id: taskToEdit.id, title, completed });
         } else {
             onAddTask({ title, completed });
         }
+        // clear the form fields after submission
         setTitle("");
         setCompleted(false);
     };
-
+//render the task form with fields for title and completion status
     return (
         <form onSubmit={handleSubmit} style={{ marginTop: "20px" }}>
             <h2>{isEditing ? "Update Task" : "Create Task"}</h2>
